@@ -54,67 +54,80 @@ export default function Home() {
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none">
             NMB
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500">
-              Redesign
+              Media
             </span>
           </h1>
 
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-zinc-400 font-medium leading-relaxed">
-            A premium digital experience is emerging. We are building the future
-            of NMB with cutting-edge technology and high-fidelity design.
+            "The company that will put you directly in front of your consumers."
+            <span className="block mt-4 text-zinc-500 text-base">
+              Founded in 2001, we are pioneers in innovative OOH advertising,
+              delivering non-traditional solutions that target, captivate, and inspire.
+            </span>
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-10">
-            <div className="flex items-center gap-2 text-sm text-zinc-500 group cursor-help">
-              <Zap className="w-4 h-4 text-yellow-500" />
-              <span>Turbopack Enhanced</span>
-            </div>
-            <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-            <div className="flex items-center gap-2 text-sm text-zinc-500 group cursor-help">
-              <Code2 className="w-4 h-4 text-blue-500" />
-              <span>Tailwind v4 Powered</span>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 pt-10">
+            {[
+              { label: "Mobile Platforms", icon: Zap },
+              { label: "High-Tech OOH", icon: Code2 },
+              { label: "Brand Ambassadors", icon: Sparkles }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm text-zinc-500 group">
+                <item.icon className="w-4 h-4 text-blue-500" />
+                <span>{item.label}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Status Card */}
+        {/* NMB Specialties Grid - Replacing Status Card with something more branded */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-20 w-full max-w-sm glass rounded-3xl p-8 space-y-4"
+          className="mt-20 w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="flex items-center justify-between text-left">
-            <div>
-              <p className="text-xs text-zinc-500 font-bold uppercase tracking-widest mb-1">
-                Current Status
+          {[
+            {
+              title: "Target",
+              desc: "Detailed local, regional, or national program planning.",
+              stats: "24/7 Access"
+            },
+            {
+              title: "Captivate",
+              desc: "17+ unique media platforms that demand attention.",
+              stats: "Full POP"
+            },
+            {
+              title: "Inspire",
+              desc: "Creative OOH solutions that create memorable experiences.",
+              stats: "Max ROI"
+            }
+          ].map((item, i) => (
+            <div key={i} className="glass rounded-3xl p-8 text-left space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold">{item.title}</h3>
+                <div className="text-[10px] font-mono text-blue-500 font-bold px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 uppercase">
+                  {item.stats}
+                </div>
+              </div>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                {item.desc}
               </p>
-              <h3 className="text-xl font-bold">In Development</h3>
             </div>
-            <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse ring-4 ring-blue-500/20" />
-          </div>
-          <div className="h-[1px] w-full bg-zinc-800" />
-          <div className="text-left space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400">Scaffolding</span>
-              <span className="text-xs font-mono text-blue-400">DONE</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400">Environment</span>
-              <span className="text-xs font-mono text-blue-400">DONE</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400">UI Architecture</span>
-              <span className="text-xs font-mono text-zinc-600 italic">IN PROGRESS</span>
-            </div>
-          </div>
+          ))}
         </motion.div>
       </div>
 
       {/* Footer Branding */}
-      <footer className="absolute bottom-10 left-10 text-zinc-600">
+      <footer className="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row justify-between items-center text-zinc-600 gap-4">
         <p className="text-[10px] font-mono tracking-widest uppercase">
-          &copy; 2026 NMB Digital. All Rights Reserved.
+          &copy; 2026 National Mobile Billboards. Pioneers in OOH since 2001.
         </p>
+        <div className="flex gap-6">
+          <span className="text-[10px] font-mono uppercase tracking-tighter">Est. 2001</span>
+          <span className="text-[10px] font-mono uppercase tracking-tighter">17 Platforms</span>
+        </div>
       </footer>
     </main>
   );
